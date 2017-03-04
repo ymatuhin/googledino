@@ -1,0 +1,33 @@
+a:link {
+	color: #0089ff;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0,137,255,.3);
+	-webkit-transition: color .3s ease,border-color .3s ease;
+	transition: color .3s ease,border-color .3s ease
+}
+
+a:visited {
+	color: #b40eb4;
+	border-color: rgba(180,14,180,.3)
+}
+
+a:link:hover,a:visited:hover {
+	color: #f41224;
+	border-color: rgba(244,18,36,.3)
+}
+
+.ads {
+	width: 980px;
+	max-width: 100%;
+	min-height: 90px;
+	margin: 24px 0;
+}
+
+.runner-box {
+	position: relative;
+	padding-bottom: 150px;
+}
+
+#main-frame-error {
+	margin: 0;
+}
