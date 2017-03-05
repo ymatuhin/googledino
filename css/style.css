@@ -17,9 +17,7 @@ a:link:hover,a:visited:hover {
 }
 
 .ads {
-	width: 980px;
-	max-width: 100%;
-	min-height: 90px;
+	max-width: 728px;
 	margin: 0;
 }
 
