@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}?v={{ site.time | date: '%s%N' }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <meta property="og:image" content="/assets/googe_dino.png"> 
+
   {% if page.lang != 'en' %}
     <link rel="alternate" hreflang="en" href="{{ site.url }}/en/">
   {% endif %}
