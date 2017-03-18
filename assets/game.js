@@ -476,13 +476,13 @@ Runner.prototype = {
    * Update the game status to started.
    */
   startGame: function() {
+    document.documentElement.classList.add('playing')
+
     this.runningTime = 0;
     this.playingIntro = false;
     this.tRex.playingIntro = false;
     this.containerEl.style.webkitAnimation = '';
     this.playCount++;
-
-    document.documentElement.classList.add('playing')
 
     // Handle tabbing off the page. Pause the current game.
     document.addEventListener(Runner.events.VISIBILITY,
@@ -756,8 +756,6 @@ Runner.prototype = {
    * Game over state.
    */
   gameOver: function() {
-    document.documentElement.classList.remove('playing')
-
     this.playSound(this.soundFx.HIT);
     vibrate(200);
 
@@ -787,6 +785,8 @@ Runner.prototype = {
   },
 
   stop: function() {
+    document.documentElement.classList.remove('playing')
+
     this.activated = false;
     this.paused = true;
     cancelAnimationFrame(this.raqId);
@@ -794,6 +794,8 @@ Runner.prototype = {
   },
 
   play: function() {
+    document.documentElement.classList.add('playing')
+    
     if (!this.crashed) {
       this.activated = true;
       this.paused = false;
@@ -804,6 +806,8 @@ Runner.prototype = {
   },
 
   restart: function() {
+    document.documentElement.classList.add('playing')
+    
     if (!this.raqId) {
       this.playCount++;
       this.runningTime = 0;
