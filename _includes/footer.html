@@ -1,17 +1,45 @@
 <section>
 	<small>
+		<a href="mailto:ym@ymatuhin.ru">ym@ymatuhin.ru</a><br>
 		{% if page.lang == 'ru' %}
-			2017 © <a href="{{ site.url }}">Гугл динозаврик</a>, разработчик страницы: <a href="https://ymatuhin.ru">Юрий Матюхин</a>
+			2017 © <a href="{{ site.url }}">Гугл динозаврик</a>
 			<br>
 			динозавр гугл играть онлайн t-rex игра оффлайн кактусы прыгает пасхалка
-			<br>
-			<a href="/en/">In English</a>
-		{% else %}
+		{% endif %}
+
+		{% if page.lang == 'en' %}
 			2017 © <a href="{{ site.url }}/en/">Google Dino</a>
 			<br>
 			dino google play online t-rex game offline jump
+		{% endif %}
+
+		{% if page.lang == 'ua' %}
+			2017 © <a href="{{ site.url }}/ua/">Гугл динозаврик</a>
 			<br>
+			динозавр гугл грати онлайн t-rex гра оффлайн кактуси стрибає пасхалка
+		{% endif %}
+
+		{% if page.lang == 'be' %}
+			2017 © <a href="{{ site.url }}/be/">гугл дыназаўрыка</a>
+			<br>
+			дыназаўр гугл гуляць онлайн t-rex гульня афлайн кактусы скача пасхалка
+		{% endif %}
+
+		<br>
+		{% if page.lang != 'ru' %}
 			<a href="/">По-русски</a>
+		{% endif %}
+
+		{% if page.lang != 'en' %}
+			<a href="/en/">In English</a>
+		{% endif %}
+
+		{% if page.lang != 'ua' %}
+			<a href="/ua/">По-українськи</a>
+		{% endif %}
+
+		{% if page.lang != 'be' %}
+			<a href="/be/">Па беларуску</a>
 		{% endif %}
 	</small>
 </section>

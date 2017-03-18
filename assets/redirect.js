@@ -3,6 +3,8 @@ var HOME_PAGE_LANG = 'ru'
 var PATHES = {
   "ru": "/",
   "en": "/en/",
+  "ua": "/ua/",
+  "be": "/be/",
 }
 
 var userLang = navigator.language || navigator.userLanguage;
