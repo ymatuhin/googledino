@@ -29,3 +29,13 @@ a:link:hover,a:visited:hover {
 #main-frame-error {
 	margin: 0;
 }
+
+
+section > * { 
+	-webkit-transition: opacity .3s ease;
+	-o-transition: opacity .3s ease;
+	-moz-transition: opacity .3s ease;
+	transition: opacity .3s ease;
+}
+.playing section > * { opacity: 0; }
+.playing .runner-box { opacity: 1; }

@@ -482,6 +482,8 @@ Runner.prototype = {
     this.containerEl.style.webkitAnimation = '';
     this.playCount++;
 
+    document.documentElement.classList.add('playing')
+
     // Handle tabbing off the page. Pause the current game.
     document.addEventListener(Runner.events.VISIBILITY,
           this.onVisibilityChange.bind(this));
@@ -754,6 +756,8 @@ Runner.prototype = {
    * Game over state.
    */
   gameOver: function() {
+    document.documentElement.classList.remove('playing')
+
     this.playSound(this.soundFx.HIT);
     vibrate(200);
 
