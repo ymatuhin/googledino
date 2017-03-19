@@ -294,24 +294,26 @@ Runner.prototype = {
    * Load and decode base 64 encoded sounds.
    */
   loadSounds: function() {
-    if (!IS_IOS) {
-      this.audioContext = new AudioContext();
+    try {
+      if (!IS_IOS) {
+        this.audioContext = new AudioContext();
 
-      var resourceTemplate =
-          document.getElementById(this.config.RESOURCE_TEMPLATE_ID).content;
+        var resourceTemplate =
+            document.getElementById(this.config.RESOURCE_TEMPLATE_ID).content;
 
-      for (var sound in Runner.sounds) {
-        var soundSrc =
-            resourceTemplate.getElementById(Runner.sounds[sound]).src;
-        soundSrc = soundSrc.substr(soundSrc.indexOf(',') + 1);
-        var buffer = decodeBase64ToArrayBuffer(soundSrc);
+        for (var sound in Runner.sounds) {
+          var soundSrc =
+              resourceTemplate.getElementById(Runner.sounds[sound]).src;
+          soundSrc = soundSrc.substr(soundSrc.indexOf(',') + 1);
+          var buffer = decodeBase64ToArrayBuffer(soundSrc);
 
-        // Async, so no guarantee of order in array.
-        this.audioContext.decodeAudioData(buffer, function(index, audioData) {
-            this.soundFx[index] = audioData;
-          }.bind(this, sound));
+          // Async, so no guarantee of order in array.
+          this.audioContext.decodeAudioData(buffer, function(index, audioData) {
+              this.soundFx[index] = audioData;
+            }.bind(this, sound));
+        }
       }
-    }
+    } catch (e) {}
   },
 
   /**
@@ -601,7 +603,9 @@ Runner.prototype = {
       document.addEventListener(Runner.events.MOUSEUP, this);
     }
     window.addEventListener(Runner.events.GAMEPADCONNECTED, this);
-    window.setInterval(this.pollGamepads.bind(this), 10);
+
+    if (navigator.getGamepads)
+      window.setInterval(this.pollGamepads.bind(this), 10);
   },
 
   /**
