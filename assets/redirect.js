@@ -3,7 +3,7 @@ var HOME_PAGE_LANG = 'ru'
 var PATHES = {
   "ru": "/",
   "en": "/en/",
-  "ua": "/ua/",
+  "uk": "/uk/",
   "be": "/be/",
 }
 
