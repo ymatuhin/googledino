@@ -1027,7 +1027,7 @@
    * @return {number}
    */
   function getTimeStamp() {
-    if (performance && performance.now) return performance.now();
+    if (window.performance) return window.performance.now();
     return new Date().getTime();
   }
 
