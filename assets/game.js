@@ -241,7 +241,7 @@
             this.containerEl.classList.add(Runner.classes.SNACKBAR_SHOW);
             document.querySelector('.icon').classList.add('icon-disabled');
           }
-        }.bind(this),
+        }.bind(this)
       );
     },
 
@@ -295,7 +295,7 @@
           this.audioContext = new AudioContext();
 
           var resourceTemplate = document.getElementById(
-            this.config.RESOURCE_TEMPLATE_ID,
+            this.config.RESOURCE_TEMPLATE_ID
           ).content;
 
           for (var sound in Runner.sounds) {
@@ -309,7 +309,7 @@
               buffer,
               function(index, audioData) {
                 this.soundFx[index] = audioData;
-              }.bind(this, sound),
+              }.bind(this, sound)
             );
           }
         }
@@ -355,7 +355,7 @@
         this.containerEl,
         this.dimensions.WIDTH,
         this.dimensions.HEIGHT,
-        Runner.classes.PLAYER,
+        Runner.classes.PLAYER
       );
 
       this.canvasCtx = this.canvas.getContext('2d');
@@ -368,14 +368,14 @@
         this.canvas,
         this.spriteDef,
         this.dimensions,
-        this.config.GAP_COEFFICIENT,
+        this.config.GAP_COEFFICIENT
       );
 
       // Distance meter
       this.distanceMeter = new DistanceMeter(
         this.canvas,
         this.spriteDef.TEXT_SPRITE,
-        this.dimensions.WIDTH,
+        this.dimensions.WIDTH
       );
 
       // Draw t-rex
@@ -392,7 +392,7 @@
 
       window.addEventListener(
         Runner.events.RESIZE,
-        this.debounceResize.bind(this),
+        this.debounceResize.bind(this)
       );
     },
 
@@ -411,7 +411,7 @@
       if (!this.resizeTimerId_) {
         this.resizeTimerId_ = setInterval(
           this.adjustDimensions.bind(this),
-          250,
+          250
         );
       }
     },
@@ -425,7 +425,7 @@
 
       var boxStyles = window.getComputedStyle(this.outerContainerEl);
       var padding = Number(
-        boxStyles.paddingLeft.substr(0, boxStyles.paddingLeft.length - 2),
+        boxStyles.paddingLeft.substr(0, boxStyles.paddingLeft.length - 2)
       );
 
       this.dimensions.WIDTH = this.outerContainerEl.offsetWidth - padding * 2;
@@ -483,7 +483,7 @@
 
         this.containerEl.addEventListener(
           Runner.events.ANIM_END,
-          this.startGame.bind(this),
+          this.startGame.bind(this)
         );
 
         this.containerEl.style.webkitAnimation = 'intro .4s ease-out 1 both';
@@ -514,17 +514,17 @@
       // Handle tabbing off the page. Pause the current game.
       document.addEventListener(
         Runner.events.VISIBILITY,
-        this.onVisibilityChange.bind(this),
+        this.onVisibilityChange.bind(this)
       );
 
       window.addEventListener(
         Runner.events.BLUR,
-        this.onVisibilityChange.bind(this),
+        this.onVisibilityChange.bind(this)
       );
 
       window.addEventListener(
         Runner.events.FOCUS,
-        this.onVisibilityChange.bind(this),
+        this.onVisibilityChange.bind(this)
       );
     },
 
@@ -533,7 +533,7 @@
         0,
         0,
         this.dimensions.WIDTH,
-        this.dimensions.HEIGHT,
+        this.dimensions.HEIGHT
       );
     },
 
@@ -587,7 +587,7 @@
 
         var playAcheivementSound = this.distanceMeter.update(
           deltaTime,
-          Math.ceil(this.distanceRan),
+          Math.ceil(this.distanceRan)
         );
 
         if (playAcheivementSound) {
@@ -687,7 +687,7 @@
       if (IS_MOBILE) {
         this.touchController.removeEventListener(
           Runner.events.TOUCHSTART,
-          this,
+          this
         );
         this.touchController.removeEventListener(Runner.events.TOUCHEND, this);
         this.containerEl.removeEventListener(Runner.events.TOUCHSTART, this);
@@ -834,7 +834,7 @@
           this.canvas,
           this.spriteDef.TEXT_SPRITE,
           this.spriteDef.RESTART,
-          this.dimensions,
+          this.dimensions
         );
       } else {
         this.gameOverPanel.draw();
@@ -1122,7 +1122,7 @@
         textTargetX,
         textTargetY,
         textTargetWidth,
-        textTargetHeight,
+        textTargetHeight
       );
 
       // Restart button.
@@ -1135,7 +1135,7 @@
         restartTargetX,
         restartTargetY,
         dimensions.RESTART_WIDTH,
-        dimensions.RESTART_HEIGHT,
+        dimensions.RESTART_HEIGHT
       );
     },
   };
@@ -1159,14 +1159,14 @@
       tRex.xPos + 1,
       tRex.yPos + 1,
       tRex.config.WIDTH - 2,
-      tRex.config.HEIGHT - 2,
+      tRex.config.HEIGHT - 2
     );
 
     var obstacleBox = new CollisionBox(
       obstacle.xPos + 1,
       obstacle.yPos + 1,
       obstacle.typeConfig.width * obstacle.size - 2,
-      obstacle.typeConfig.height - 2,
+      obstacle.typeConfig.height - 2
     );
 
     // Debug outer box
@@ -1187,11 +1187,11 @@
           // Adjust the box to actual positions.
           var adjTrexBox = createAdjustedCollisionBox(
             tRexCollisionBoxes[t],
-            tRexBox,
+            tRexBox
           );
           var adjObstacleBox = createAdjustedCollisionBox(
             collisionBoxes[i],
-            obstacleBox,
+            obstacleBox
           );
           var crashed = boxCompare(adjTrexBox, adjObstacleBox);
 
@@ -1220,7 +1220,7 @@
       box.x + adjustment.x,
       box.y + adjustment.y,
       box.width,
-      box.height,
+      box.height
     );
   }
 
@@ -1237,7 +1237,7 @@
       obstacleBox.x,
       obstacleBox.y,
       obstacleBox.width,
-      obstacleBox.height,
+      obstacleBox.height
     );
     canvasCtx.restore();
   }
@@ -1302,7 +1302,7 @@
     spriteImgPos,
     dimensions,
     gapCoefficient,
-    speed,
+    speed
   ) {
     this.canvasCtx = canvasCtx;
     this.spritePos = spriteImgPos;
@@ -1421,7 +1421,7 @@
           this.xPos,
           this.yPos,
           this.typeConfig.width * this.size,
-          this.typeConfig.height,
+          this.typeConfig.height
         );
       },
 
@@ -1465,7 +1465,7 @@
        */
       getGap: function(gapCoefficient, speed) {
         var minGap = Math.round(
-          this.width * speed + this.typeConfig.minGap * gapCoefficient,
+          this.width * speed + this.typeConfig.minGap * gapCoefficient
         );
         var maxGap = Math.round(minGap * Obstacle.MAX_GAP_COEFFICIENT);
         return getRandomNum(minGap, maxGap);
@@ -1491,7 +1491,7 @@
             collisionBoxes[i].x,
             collisionBoxes[i].y,
             collisionBoxes[i].width,
-            collisionBoxes[i].height,
+            collisionBoxes[i].height
           );
         }
       },
@@ -1723,7 +1723,7 @@
       // Game intro animation, T-rex moves in from the left.
       if (this.playingIntro && this.xPos < this.config.START_X_POS) {
         this.xPos += Math.round(
-          this.config.START_X_POS / this.config.INTRO_DURATION * deltaTime,
+          this.config.START_X_POS / this.config.INTRO_DURATION * deltaTime
         );
       }
 
@@ -1785,7 +1785,7 @@
           this.xPos,
           this.yPos,
           this.config.WIDTH_DUCK,
-          this.config.HEIGHT,
+          this.config.HEIGHT
         );
       } else {
         // Crashed whilst ducking. Trex is standing up so needs adjustment.
@@ -1802,7 +1802,7 @@
           this.xPos,
           this.yPos,
           this.config.WIDTH,
-          this.config.HEIGHT,
+          this.config.HEIGHT
         );
       }
     },
@@ -1871,9 +1871,7 @@
       // Speed drop makes Trex fall faster.
       if (this.speedDrop) {
         this.yPos += Math.round(
-          this.jumpVelocity *
-            this.config.SPEED_DROP_COEFFICIENT *
-            framesElapsed,
+          this.jumpVelocity * this.config.SPEED_DROP_COEFFICIENT * framesElapsed
         );
       } else {
         this.yPos += Math.round(this.jumpVelocity * framesElapsed);
@@ -2082,7 +2080,7 @@
         targetX,
         targetY,
         targetWidth,
-        targetHeight,
+        targetHeight
       );
 
       this.canvasCtx.restore();
@@ -2132,7 +2130,7 @@
 
           // Create a string representation of the distance with leading 0.
           var distanceStr = (this.defaultString + distance).substr(
-            -this.maxScoreUnits,
+            -this.maxScoreUnits
           );
           this.digits = distanceStr.split('');
         } else {
@@ -2188,7 +2186,7 @@
     setHighScore: function(distance) {
       distance = this.getActualDistance(distance);
       var highScoreStr = (this.defaultString + distance).substr(
-        -this.maxScoreUnits,
+        -this.maxScoreUnits
       );
 
       this.highScore = ['10', '11', ''].concat(highScoreStr.split(''));
@@ -2222,7 +2220,7 @@
     this.remove = false;
     this.cloudGap = getRandomNum(
       Cloud.config.MIN_CLOUD_GAP,
-      Cloud.config.MAX_CLOUD_GAP,
+      Cloud.config.MAX_CLOUD_GAP
     );
 
     this.init();
@@ -2248,7 +2246,7 @@
     init: function() {
       this.yPos = getRandomNum(
         Cloud.config.MAX_SKY_LEVEL,
-        Cloud.config.MIN_SKY_LEVEL,
+        Cloud.config.MIN_SKY_LEVEL
       );
       this.draw();
     },
@@ -2275,7 +2273,7 @@
         this.xPos,
         this.yPos,
         Cloud.config.WIDTH,
-        Cloud.config.HEIGHT,
+        Cloud.config.HEIGHT
       );
 
       this.canvasCtx.restore();
@@ -2384,7 +2382,7 @@
         this.xPos[0],
         this.yPos,
         this.dimensions.WIDTH,
-        this.dimensions.HEIGHT,
+        this.dimensions.HEIGHT
       );
 
       this.canvasCtx.drawImage(
@@ -2396,7 +2394,7 @@
         this.xPos[1],
         this.yPos,
         this.dimensions.WIDTH,
-        this.dimensions.HEIGHT,
+        this.dimensions.HEIGHT
       );
     },
 
@@ -2610,8 +2608,8 @@
             obstacleSpritePos,
             this.dimensions,
             this.gapCoefficient,
-            currentSpeed,
-          ),
+            currentSpeed
+          )
         );
 
         this.obstacleHistory.unshift(obstacleType.type);
@@ -2661,7 +2659,7 @@
      */
     addCloud: function() {
       this.clouds.push(
-        new Cloud(this.canvas, this.spritePos.CLOUD, this.dimensions.WIDTH),
+        new Cloud(this.canvas, this.spritePos.CLOUD, this.dimensions.WIDTH)
       );
     },
   };
