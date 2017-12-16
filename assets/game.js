@@ -479,7 +479,12 @@
           this.dimensions.WIDTH +
           'px }' +
           '}';
-        document.styleSheets[0].insertRule(keyframes, 0);
+
+        try {
+          document.styleSheets[0].insertRule(keyframes, 0);
+        } catch (error) {
+          this.startGame();
+        }
 
         this.containerEl.addEventListener(
           Runner.events.ANIM_END,
@@ -492,6 +497,7 @@
         if (this.touchController) {
           this.outerContainerEl.appendChild(this.touchController);
         }
+
         this.activated = true;
         this.started = true;
       } else if (this.crashed) {
