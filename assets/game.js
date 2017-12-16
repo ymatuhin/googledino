@@ -1033,7 +1033,8 @@
    * @return {number}
    */
   function getTimeStamp() {
-    if (window.performance) return window.performance.now();
+    if (window.performance && window.performance.now)
+      return window.performance.now();
     return new Date().getTime();
   }
 
