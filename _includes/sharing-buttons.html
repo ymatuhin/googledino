@@ -1,40 +1,7 @@
-{% if page.lang == 'ru' %}
-    <div class="likely likely-big">
-        <div class="twitter" data-via="ymatuhin">Твитнуть</div>
-        <div class="facebook">Поделиться</div>
-        <div class="gplus">Плюсануть</div>
-        <div class="vkontakte">Поделиться</div>
-        <div class="telegram">Отправить</div>
-    </div>
-{% endif %}
-
-{% if page.lang == 'en' %}
-    <div class="likely likely-big">
-        <div class="twitter" data-via="ymatuhin">Tweet</div>
-        <div class="facebook">Share</div>
-        <div class="linkedin">Link</div>
-        <div class="gplus">Plus</div>
-        <div class="vkontakte">Share</div>
-        <div class="telegram">Send</div>
-    </div>
-{% endif %}
-
-{% if page.lang == 'ua' %}
-    <div class="likely likely-big">
-        <div class="twitter" data-via="ymatuhin">Поділитися</div>
-        <div class="facebook">Поділитися</div>
-        <div class="gplus">Поділитися</div>
-        <div class="vkontakte">Поділитися</div>
-        <div class="telegram">Відправити</div>
-    </div>
-{% endif %}
-
-{% if page.lang == 'by' %}
-    <div class="likely likely-big">
-        <div class="twitter" data-via="ymatuhin">Падзяліцца</div>
-        <div class="facebook">Падзяліцца</div>
-        <div class="gplus">Падзяліцца</div>
-        <div class="vkontakte">Падзяліцца</div>
-        <div class="telegram">Адправіць</div>
-    </div>
-{% endif %}
+<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+<script src="//yastatic.net/share2/share.js"
+        async="async"></script>
+<div class="ya-share2"
+     data-services="vkontakte,facebook,gplus,twitter,evernote,pocket,telegram"
+     data-lang=""
+     data-counter="{{ page.lang }}"></div>
