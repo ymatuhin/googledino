@@ -24,7 +24,7 @@ function checkSS() {
 
   var path = location.pathname.replace(/\//g, '') || HOME_PAGE_LANG;
 
-  if (lang == path) return (sessionStorage.redirected = true);
+  if (lang === path) return;
   if (sessionStorage.redirected) return;
   if (!PATHES[lang]) return;
 
